@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\Resource;
 
-class ReviewResource extends JsonResource
+class ReviewResource extends Resource
 {
     /**
      * Transform the resource into an array.
@@ -17,7 +17,11 @@ class ReviewResource extends JsonResource
         return [
             'customer'=>$this->customer,
             'body'=> $this->review,
-            'star'=>$this->star 
+            'star'=>$this->star,
+            'href'=>
+            [
+                'link'=>route('reviews.index',$this->id)
+            ]
         ];
     }
 }
